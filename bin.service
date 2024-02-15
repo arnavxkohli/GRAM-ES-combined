@@ -1,0 +1,15 @@
+[Unit]
+Description=Bin Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=pi               # Replace <username> with your username
+Group=pi             # Replace <groupname> with your groupname
+WorkingDirectory=/home/pi
+ExecStart=/usr/bin/python3 /home/pi/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
