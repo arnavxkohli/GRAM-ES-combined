@@ -77,6 +77,7 @@ def testloop(ub, lb):
 
 def dataloop():
     while True:
+	# Data sending will not start until the magnetic sensor has been calibrated
         if globals()['calib_complete']:
             write_to_db(battery_detected = globals()['battery_violation'], fire_detected = globals()['fire&smoke'], ToF_reading = globals()['fill_level'], magnetic_reading = globals()['mag_field'],  air_quality_reading = globals()['co2_level'],  bin_id = 1)
 
