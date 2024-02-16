@@ -81,12 +81,12 @@ class MagField():
         abs_max = 0
         abs_min = 1e9
         for i in range(1000):
-            mx, my, mz, absave = self.sense()
+            _, _, _, absave = self.sense()
             abs_max = absave if absave > abs_max else abs_max
             abs_min = absave if absave < abs_min else abs_min
         print('Calibration complete.')
         
-        return abs_max * 1.01, abs_min * 0.99
+        return abs_max * 1.02, abs_min * 0.98
 
 # CO2 and organic particle detector. Used to detect smoke or fire.
 class AirQua():
@@ -163,6 +163,7 @@ class Range():
         # Predefine the values for pulse duration in case the while loop is skipped and the pulse become undefined
         self.pulse_start = 0
         self.pulse_end = 200
+        self.distance = 200
 
     def sense(self):
         try:
@@ -172,11 +173,11 @@ class Range():
             GPIO.output(self.trigger_pin, False)
             
             # Record the start and stop time of the echo pulse
-            timeout = time.time() + 1  # Timeout duration of 1 second
+            timeout = time.time() + 0.5  # Timeout duration of 1 second
             while GPIO.input(self.echo_pin) == 0 and time.time() < timeout:
                 self.pulse_start = time.time()
 
-            timeout = time.time() + 1  # Reset timeout for the second while loop
+            timeout = time.time() + 0.5  # Reset timeout for the second while loop
             while GPIO.input(self.echo_pin) == 1 and time.time() < timeout:
                 self.pulse_end = time.time()
 
@@ -185,8 +186,11 @@ class Range():
             pulse_duration = self.pulse_end - self.pulse_start
             distance = pulse_duration * 17150
             distance = round(distance, 2)
+
+            if distance > 0:
+                self.distance = distance
             
-            return distance
+            return self.distance
         except RPi.GPIO.GPIOError as e:
             print('GPIO Error:', e)
         except Exception as e:
