@@ -1,5 +1,7 @@
 # GRAM™ codebase
 
+This repository holds the code for GRAM™'s proof of concept waste management marketing website and web-app. More information can be found in the video below.
+
 ## Website code
 
 - Run `make` to build the webite and then navigate to the [dev server](http://localhost:3000) (preferably from an incognito tab) to view the website. You need to have GNU make installed to do this. If not:
@@ -26,8 +28,7 @@ npm run dev
 - Then run `source venv/bin/activate` on Unix based systems. `.\venv\Scripts\activate` if on Windows.
 - Finally, run `pip install -r requirements.txt`
 
-- Server can then be run using `python3 wsgi.py`. It has been configured [here](https://gram-server.onrender.com/)(might be unresponsive for a minute because we used render's free tier, the server is automatically unresponsive after a period of inactivity and takes about a minute or two to get up and running, if it doesn't work, change the server URL in `website-code/app/requests.js` to `http://127.0.0.1` for testing).
-
+- Server can then be run using `python3 wsgi.py`. It has been configured [here](https://gram-backend.vercel.app/).
 ## Sensor code
 
 - Run `python3 -m venv venv`

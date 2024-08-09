@@ -38,7 +38,7 @@ function Content() {
         } catch (error) {
             console.error('Sign up failed:', error);
             // Handle sign up failure
-            setError(`${error}. Please try again.`);
+            setError(`User by that name already exists. Please try again.`);
         }
     };
 
@@ -100,8 +100,8 @@ export default function SignUp() {
     };
 
     return (
-        <div className="text-center font-[Kanit]" style={backgroundStyle}>
-            <div className="py-[3%] px-[33%]" style={overlayStyle}>
+        <div className="text-center min-h-screen w-full font-[Kanit]" style={backgroundStyle}>
+            <div className="min-h-screen py-[5%] px-[33%]" style={overlayStyle}>
                 <div className="bg-gradient-to-r from-[#11235A] to-[#492E87] inset-0 rounded-3xl">
                     <Content />
                 </div>

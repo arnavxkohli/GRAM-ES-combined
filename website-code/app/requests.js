@@ -1,4 +1,4 @@
-const Server = "https://gram-server.onrender.com";
+const Server = "https://gram-backend.vercel.app";
 
 async function sendSignIn(postData) {
   try {

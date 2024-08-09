@@ -35,7 +35,7 @@ function Content() {
         } catch (error) {
             console.error('Sign in failed:', error);
             // Handle sign up failure
-            setError(`${error}. Please try again.`);
+            setError(`Incorrect Username or Password. Please try again.`);
         }
     };
 
@@ -55,7 +55,7 @@ function Content() {
 
     return (
         <div>
-            <div className="text-[#EBD9B4] text-center md:text-[2.3rem] text-[1.9rem] pb-[4rem] pt-[4rem]">
+            <div className="text-[#EBD9B4] text-center md:text-[2.3rem] text-[1.9rem] py-[4rem]">
                 Sign In
             </div>
             <form onSubmit={handleSubmit}>
@@ -94,8 +94,8 @@ export default function SignIn() {
     };
 
     return (
-        <div className="text-center h-[120vh] w-screen font-[Kanit]" style={backgroundStyle}>
-            <div className="px-[12%] py-[20%] md:py-[5%] md:px-[33%]" style={overlayStyle}>
+        <div className="text-center min-h-screen w-screen font-[Kanit]" style={backgroundStyle}>
+            <div className="px-[12%] min-h-screen py-[4%] md:py-[6%] md:px-[33%]" style={overlayStyle}>
                 <div className="bg-gradient-to-r from-[#11235A] to-[#492E87] inset-0 rounded-3xl">
                     <Content />
                 </div>

@@ -34,14 +34,13 @@ export default function MessageBox(){
 
             let messages = [];
 
-            // determine messages to be shown, stored in array
-
             if(!magnetTime.current){
                 magnetTime.current = magnetData['data']['time'];
             }
             if(!fireTime.current){
                 fireTime.current = heatData['data']['time'];
             }
+            console.log(fullData);
             if(fullData['data'] >= 80){
                 if(!fullTime.current){
                     fullTime.current = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -64,7 +63,7 @@ export default function MessageBox(){
                 messages.push(new Message('Everything is OK! :D', '#008000', new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }), true));
             }
 
-            messages.sort((a, b) => b.time.localeCompare(a.time)); // sort based on most recent first
+            messages.sort((a, b) => b.time.localeCompare(a.time));
 
             setFetchedMessages(messages);
         };

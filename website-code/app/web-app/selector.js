@@ -53,7 +53,7 @@ export default function SideBar({ bins }) {
       setButtons(bins);
     }, [bins]);
 
-    const handleButtonClick = (id) => { // change selected button
+    const handleButtonClick = (id) => {
         setButtons((prevButtons) =>
         prevButtons.map((button) =>
             button.id === id ? { ...button, selected: true } : { ...button, selected: false }
@@ -64,7 +64,7 @@ export default function SideBar({ bins }) {
           window.dispatchEvent(new CustomEvent('binIdChanged', { detail: id }));
         }
     };
-    // return svg for add or for a bin in case of selection
+
     return (
         <div>
         {buttons.map((button) => (
@@ -72,7 +72,7 @@ export default function SideBar({ bins }) {
             key={button.id}
             selected={button.selected}
             svgCode={
-                button.type === 'bin'
+                button.id > 0
                 ?
                 <path d="m16.13,23H5.835c-.768,0-1.409-.576-1.491-1.341L2.556,5h16.886l-.219,2h1.006l.219-2h1.552v-1h-6v-1.5c0-1.379-1.121-2.5-2.5-2.5h-5c-1.379,0-2.5,1.121-2.5,2.5v1.5H0v1h1.551l1.799,16.767c.137,1.273,1.205,2.233,2.485,2.233h10.295c1.198,0,2.203-.847,2.439-2h-1.049c-.21.583-.744,1-1.389,1ZM7,2.5c0-.827.673-1.5,1.5-1.5h5c.827,0,1.5.673,1.5,1.5v1.5H7v-1.5Zm17,6.5v1h-8v-1h8Zm-8,5h7v1h-7v-1Zm0,5h6v1h-6v-1Z"/>
                 :

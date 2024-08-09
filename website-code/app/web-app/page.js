@@ -12,21 +12,19 @@ import { useRouter } from "next/navigation";
 let uId;
 
 if(typeof window !== 'undefined'){
-  uId = localStorage.getItem('uId'); // check for server side render, common practice for next.js
+  uId = localStorage.getItem('uId');
 }
 
 function GradientDivider(){
   const gradientBorder = {
     borderTop: "7px solid transparent",
     borderImage: "linear-gradient(45deg, #5e3ccf, #1693db) 1",
+    width: "100vw"
   };
 
   return (
-    <div className="relative w-full">
-      <div className="absolute inset-0 flex items-center">
-        <div className="w-full" style={gradientBorder}></div>
-      </div>
-    </div>
+        <div className='w-screen' style={gradientBorder}>
+        </div>
   );
 };
 

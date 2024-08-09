@@ -13,6 +13,9 @@ const setToLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
+// const binId = localStorage.getItem('binId'); // uncomment this once you are done with defining everything
+// const uId = localStorage.getItem('uId');
+
 const Bin = ({uId, binId}) => {
   const localStorageKey = `fillLevel-${binId}`;
   const defaultValue = getFromLocalStorage(localStorageKey, 0);

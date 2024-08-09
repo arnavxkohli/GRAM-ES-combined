@@ -17,7 +17,6 @@ def root():
     return "GRAM server"
 
 
-# authenticate sign up, verify password matches
 @app.route("/user/signup", methods=["POST"])
 def signup():
     if ('user' in session):
@@ -42,7 +41,6 @@ def signup():
             return jsonify({ "status": "failed", "message": "An Error Occurred" }), 400
 
 
-# authenticate user sign in
 @app.route("/user/signin", methods=["POST"])
 def signin():
     if ('user' in session):
@@ -64,8 +62,6 @@ def signin():
             return jsonify({ "status": "failed", "message": "An Error Occurred" }), 400
 
 
-# add a bin to a user and the global bins, multiple users can register multiple bins 
-# "placeholder" used since firebase does not accept null values (deletes them as optimization)
 @app.route("/user/addbin", methods=["PUT"])
 def add_bin():
     data = request.json
@@ -86,7 +82,6 @@ def add_bin():
         return jsonify({ "status": "error", "type": type(e).__name__, "message": str(e)}), 400
 
 
-# fetch bins associated with a user
 @app.route("/user/getbins", methods=["GET"])
 def get_bins():
     uId = encode_email(request.args.get('uId'))
@@ -107,7 +102,6 @@ def get_bins():
         return jsonify({ "status": "error", "type": type(e).__name__, "message": str(e)}), 400
 
 
-# fetch bin data for a particular bin
 @app.route("/bin/fetch", methods=["GET"])
 def fetch_sensors():
     uId = encode_email(request.args.get('uId'))
@@ -138,7 +132,7 @@ def fetch_sensors():
         print("Error fetching data from Firestore:", str(e))
         return jsonify({ "status": "error", "type": type(e).__name__, "message": str(e)}), 400
 
-# fetch messages from the bin sent by the pi
+
 @app.route("/bin/messages", methods=["GET"])
 def fetch_messages():
     uId = encode_email(request.args.get('uId'))
